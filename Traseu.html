@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color:white;
+        }
+        .route-panel {
+            margin-top: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #7CB895;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #7CB895;
+        }
+        .route-item {
+            margin-bottom: 5px;
+            padding: 5px;
+            background-color: #176d17;
+            border-radius: 3px;
+        }
+        .controls {
+            margin-bottom: 15px;
+        }
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+        }
+        #loading {
+            display: none;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body class="body">
+    
+    <div class="taskbar">
+        <ul>
+            <li><a href="main.html">Acasă</a></li>
+            <li><a href="Anunturi.html">Anunțuri</a></li>
+            <li><a href="Documente.html">Documente</a></li>
+            <li><a href="Informatii.html">Informații generale</a></li>
+            <li><a href="Programari.html">Programari</a></li>
+            <li><a href="Traseu.html">Traseu</a></li>
+            <p>Sighet Online</p>
+
+            <img src="images/Logo2.png" alt="" srcset="">
+          </ul>
+    </div>
+    <div class="container">
+        <div class="locations-panel">
+            <div class="container">
+                <div class="file-upload">
+    
+                    <div id="loading">Loading locations...</div>
+                    
+                    <div class="route-panel">
+                        <h2>Generated Route</h2>
+                        <div class="controls">
+                            <label for="route-count">Number of locations:</label>
+                            <input type="number" id="route-count" min="1" value="3">
+                            <button id="generate-btn">Generate Route</button>
+                            <button id="clear-route-btn">Clear Route</button>
+                        </div>
+                        <div id="route-output"></div>
+                    </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const loadingElement = document.getElementById('loading');
+                    const routeCountInput = document.getElementById('route-count');
+                    const routeOutput = document.getElementById('route-output');
+                    const generateBtn = document.getElementById('generate-btn');
+                    const clearRouteBtn = document.getElementById('clear-route-btn');
+                    
+                    let locations = [];
+        
+                    // Load locations from server file
+                    function loadLocations() {
+                        loadingElement.style.display = 'block';
+                        
+                        fetch('locations-input.txt')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Failed to load locations file');
+                                }
+                                return response.text();
+                            })
+                            .then(text => {
+                                locations = text.split('\n')
+                                              .map(loc => loc.trim())
+                                              .filter(loc => loc.length > 0);
+                                loadingElement.style.display = 'none';
+                            })
+                            .catch(error => {
+                                console.error('Error loading locations:', error);
+                                loadingElement.textContent = 'Error loading locations. Please check if locations-input.txt exists.';
+                            });
+                    }
+        
+                    // Generate route
+                    generateBtn.addEventListener('click', function() {
+                        if (locations.length === 0) {
+                            alert('Locations not loaded yet or file is empty!');
+                            return;
+                        }
+        
+                        const count = parseInt(routeCountInput.value);
+                        if (isNaN(count) || count < 1) {
+                            alert('Please enter a valid number of locations');
+                            return;
+                        }
+        
+                        // Shuffle array and pick first 'count' elements
+                        const shuffled = [...locations].sort(() => 0.5 - Math.random());
+                        const selected = shuffled.slice(0, Math.min(count, locations.length));
+        
+                        // Display the route
+                        routeOutput.innerHTML = '';
+                        selected.forEach((location, index) => {
+                            const item = document.createElement('div');
+                            item.className = 'route-item';
+                            item.textContent = `${index + 1}. ${location}`;
+                            routeOutput.appendChild(item);
+                        });
+                    });
+        
+                    // Clear route
+                    clearRouteBtn.addEventListener('click', function() {
+                        routeOutput.innerHTML = '';
+                    });
+        
+                    // Start loading locations when page loads
+                    loadLocations();
+                });
+            </script>
+            <br>
+            <img src="/images/Harta.jpeg" style="height: 300px; border: black;">
+    
+</body>
+</html>

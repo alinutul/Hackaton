@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programări Primărie</title>
+    <link rel="stylesheet" href="style/styleProgrmari.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <style>
+  
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        #calendar {
+            margin: 0 auto;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .fc-event {
+            cursor: pointer;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+        
+        .day-appointment-count {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .fc-daygrid-day-frame {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="taskbar">
+        <ul>
+            <li><a href="main.html">Acasă</a></li>
+            <li><a href="Anunturi.html">Anunțuri</a></li>
+            <li><a href="Documente.html">Documente</a></li>
+            <li><a href="Informatii.html">Informații generale</a></li>
+            <li><a href="Programari.html">Programari</a></li>
+            <li><a href="Traseu.html">Traseu</a></li>
+            <p>Sighet Online</p>
+
+            <img src="images/Logo2.png" alt="" srcset="">
+          </ul>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <h1>Calendar Programări Primărie</h1>
+            <div id="calendar"></div>
+        </div>
+
+        <!-- Appointment Modal -->
+        <div class="modal" id="appointmentModal">
+            <div class="modal-content">
+                <h2 id="modalTitle">Adaugă programare nouă</h2>
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="appointmentDate">Dată:</label>
+                        <input type="date" id="appointmentDate" required>
+                        <div id="dateError" class="error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentTime">Ora:</label>
+                        <select id="appointmentTime" required>
+                            <option value="">Selectează ora</option>
+                            <option value="08:00">08:00</option>
+                            <option value="08:15">08:15</option>
+                            <option value="08:30">08:30</option>
+                            <option value="08:45">08:45</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:15">09:15</option>
+                            <option value="09:30">09:30</option>
+                            <option value="09:45">09:45</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:15">10:15</option>
+                            <option value="10:30">10:30</option>
+                            <option value="10:45">10:45</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:15">11:15</option>
+                            <option value="11:30">11:30</option>
+                            <option value="11:45">11:45</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:15">12:15</option>
+                            <option value="12:30">12:30</option>
+                            <option value="12:45">12:45</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:15">13:15</option>
+                            <option value="13:30">13:30</option>
+                            <option value="13:45">13:45</option>
+                        </select>
+                        <div id="timeError" class="error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serviceType">Ghișeu:</label>
+                        <select id="serviceType" required>
+                            <option value="">Selectează ghișeul</option>
+                            <option value="Evidență persoane">Ghișeul Evidență persoane</option>
+                            <option value="Casierie">Ghișeul Casierie</option>
+                            <option value="Registratură">Ghișeul Registratură</option>
+                        </select>
+                        <div id="serviceError" class="error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clientName">Nume și prenume:</label>
+                        <input type="text" id="clientName" required>
+                        <div id="nameError" class="error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointmentReason">Motivul programării:</label>
+                        <input type="text" id="appointmentReason" required>
+                        <div id="reasonError" class="error"></div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" class="btn-danger" id="cancelBtn">Anulează</button>
+                        <button type="submit" class="btn-primary">Salvează</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- View Appointment Modal -->
+        <div class="modal" id="viewModal">
+            <div class="modal-content">
+                <h2>Detalii programare</h2>
+                <div id="appointmentDetails"></div>
+                <div class="button-group">
+                    <button type="button" class="btn-primary" id="closeViewBtn">Închide</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/ro.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize calendar
+                const calendarEl = document.getElementById('calendar');
+                const calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    selectable: true,
+                    locale: 'ro',
+                    firstDay: 1, // Monday first
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    select: handleDateSelect,
+                    eventClick: handleEventClick,
+                    events: loadAppointments(),
+                    dayCellContent: function(arg) {
+                        // Add appointment count to each day
+                        const appointments = loadAppointments();
+                        const dateStr = arg.date.toISOString().split('T')[0];
+                        const dayAppointments = appointments.filter(app => 
+                            app.start.startsWith(dateStr)
+                        ).length;
+                        
+                        const dayNumber = arg.dayNumberText.replace(' ', '');
+                        
+                        if (dayAppointments > 0) {
+                            return {
+                                html: `${dayNumber}<div class="day-appointment-count">${dayAppointments}</div>`
+                            };
+                        }
+                        
+                        return { html: dayNumber };
+                    }
+                });
+                calendar.render();
+
+                // Modal elements
+                const appointmentModal = document.getElementById('appointmentModal');
+                const viewModal = document.getElementById('viewModal');
+                const appointmentForm = document.getElementById('appointmentForm');
+                const cancelBtn = document.getElementById('cancelBtn');
+                const closeViewBtn = document.getElementById('closeViewBtn');
+                
+                // Form elements
+                const appointmentDate = document.getElementById('appointmentDate');
+                const appointmentTime = document.getElementById('appointmentTime');
+                const serviceType = document.getElementById('serviceType');
+                const clientName = document.getElementById('clientName');
+                const appointmentReason = document.getElementById('appointmentReason');
+                
+                // Error elements
+                const dateError = document.getElementById('dateError');
+                const timeError = document.getElementById('timeError');
+                const serviceError = document.getElementById('serviceError');
+                const nameError = document.getElementById('nameError');
+                const reasonError = document.getElementById('reasonError');
+                
+                // Current editing appointment ID
+                let editingAppointmentId = null;
+                
+                // Event listeners
+                cancelBtn.addEventListener('click', closeModal);
+                closeViewBtn.addEventListener('click', () => viewModal.style.display = 'none');
+                
+                appointmentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (validateForm()) {
+                        saveAppointment();
+                    }
+                });
+                
+                // Functions
+                function handleDateSelect(info) {
+                    const selectedDate = info.start;
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (selectedDate < today) {
+                        alert('Nu puteți face programări pentru date trecute.');
+                        calendar.unselect();
+                        return;
+                    }
+                    
+                    editingAppointmentId = null;
+                    document.getElementById('modalTitle').textContent = 'Adaugă programare nouă';
+                    resetForm();
+                    
+                    // Set the selected date
+                    const dateStr = selectedDate.toISOString().split('T')[0];
+                    appointmentDate.value = dateStr;
+                    
+                    // Filter available times
+                    filterAvailableTimes(dateStr);
+                    
+                    appointmentModal.style.display = 'flex';
+                }
+                
+                function handleEventClick(info) {
+                    const event = info.event;
+                    const start = event.start;
+                    const dateStr = start.toLocaleDateString('ro-RO', { 
+                        weekday: 'long', 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    });
+                    const timeStr = start.toLocaleTimeString('ro-RO', { 
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                    });
+                    
+                    const details = `
+                        <p><strong>Data:</strong> ${dateStr}</p>
+                        <p><strong>Ora:</strong> ${timeStr}</p>
+                        <p><strong>Ghișeu:</strong> ${event.extendedProps.serviceType}</p>
+                        <p><strong>Nume:</strong> ${event.title}</p>
+                        <p><strong>Motiv:</strong> ${event.extendedProps.reason}</p>
+                    `;
+                    
+                    document.getElementById('appointmentDetails').innerHTML = details;
+                    viewModal.style.display = 'flex';
+                }
+                
+                function validateForm() {
+                    let isValid = true;
+                    
+                    // Reset errors
+                    dateError.textContent = '';
+                    timeError.textContent = '';
+                    serviceError.textContent = '';
+                    nameError.textContent = '';
+                    reasonError.textContent = '';
+                    
+                    // Validate date
+                    if (!appointmentDate.value) {
+                        dateError.textContent = 'Selectați o dată.';
+                        isValid = false;
+                    }
+                    
+                    // Validate time
+                    if (!appointmentTime.value) {
+                        timeError.textContent = 'Selectați o oră.';
+                        isValid = false;
+                    }
+                    
+                    // Validate service type
+                    if (!serviceType.value) {
+                        serviceError.textContent = 'Selectați un ghișeu.';
+                        isValid = false;
+                    }
+                    
+                    // Validate name
+                    if (!clientName.value.trim()) {
+                        nameError.textContent = 'Introduceți numele.';
+                        isValid = false;
+                    }
+                    
+                    // Validate reason
+                    if (!appointmentReason.value.trim()) {
+                        reasonError.textContent = 'Introduceți motivul programării.';
+                        isValid = false;
+                    }
+                    
+                    return isValid;
+                }
+                
+                function saveAppointment() {
+                    const appointments = loadAppointments();
+                    const dateTimeStr = `${appointmentDate.value}T${appointmentTime.value}:00`;
+                    const startDate = new Date(dateTimeStr);
+                    
+                    // Check for time slot conflict
+                    const conflict = appointments.some(app => {
+                        return new Date(app.start).getTime() === startDate.getTime() && 
+                            (!editingAppointmentId || app.id !== editingAppointmentId);
+                    });
+                    
+                    if (conflict) {
+                        timeError.textContent = 'Această oră este deja ocupată.';
+                        return;
+                    }
+                    
+                    const appointment = {
+                        id: editingAppointmentId || Date.now().toString(),
+                        title: clientName.value.trim(),
+                        start: dateTimeStr,
+                        extendedProps: {
+                            serviceType: serviceType.value,
+                            reason: appointmentReason.value.trim()
+                        }
+                    };
+                    
+                    if (editingAppointmentId) {
+                        // Update existing appointment
+                        const index = appointments.findIndex(app => app.id === editingAppointmentId);
+                        if (index !== -1) {
+                            appointments[index] = appointment;
+                        }
+                    } else {
+                        // Add new appointment
+                        appointments.push(appointment);
+                    }
+                    
+                    saveAppointments(appointments);
+                    calendar.refetchEvents();
+                    closeModal();
+                }
+                
+                function filterAvailableTimes(dateStr) {
+                    const appointments = loadAppointments();
+                    const bookedTimes = appointments
+                        .filter(app => app.start.startsWith(dateStr))
+                        .map(app => app.start.split('T')[1].substring(0, 5));
+                    
+                    // Enable all options first
+                    for (let option of appointmentTime.options) {
+                        option.disabled = false;
+                        option.hidden = false;
+                    }
+                    
+                    // Disable booked times
+                    for (let option of appointmentTime.options) {
+                        if (option.value && bookedTimes.includes(option.value)) {
+                            option.disabled = true;
+                            option.textContent += ' (ocupat)';
+                        }
+                    }
+                }
+                
+                function loadAppointments() {
+                    const appointmentsJson = localStorage.getItem('cityHallAppointments');
+                    return appointmentsJson ? JSON.parse(appointmentsJson) : [];
+                }
+                
+                function saveAppointments(appointments) {
+                    localStorage.setItem('cityHallAppointments', JSON.stringify(appointments));
+                }
+                
+                function resetForm() {
+                    appointmentForm.reset();
+                    dateError.textContent = '';
+                    timeError.textContent = '';
+                    serviceError.textContent = '';
+                    nameError.textContent = '';
+                    reasonError.textContent = '';
+                }
+                
+                function closeModal() {
+                    appointmentModal.style.display = 'none';
+                    resetForm();
+                }
+            });
+        </script>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Left Section: Navigation Links -->
+            <div class="footer-left">
+                <h3>Program audiență primărie</h3>
+                <p>Primar: Marți orele 10:00-12:00 </p>
+                <p>Vice-Primar: Miercuri orele 10:00-12:00 </p>
+                <p>Secretar: Marți orele 12:00-14:00 </p>
+            </div>
+    
+            <!-- Footer Center Section: Social Media Icons -->
+            <div class="footer-center">
+                <h4>Urmărește</h4>
+                <div class="social-icons">
+                    <a href="https://www.primaria-sighet.ro/ro" class="social-icon">Website Primărie</a>
+                    <a href="https://muzeulmaramuresului.ro/" class="social-icon">Website Muzeul Maramureșului</a>
+                    <a href="https://www.spitalsighet.ro/" class="social-icon">Website Spital</a>
+                    <br>
+                    <a href="https://maranord.ro/" class="social-icon">Website Mara Nord</a>
+                    <a href="https://www.politiadefrontiera.ro/ro/structura-teritoriala-sighetu-marmatiei/" class="social-icon">Website Inspectoratul Teritorial</a>
+                    <a href="https://tvsighet.ro/" class="social-icon">Website TV Sighet</a>
+                </div>
+            </div>
+    
+            <!-- Footer Right Section: Contact Information -->
+            <div class="footer-right">
+                <h4>Contact Primăire</h4>
+                <p>Email: primaria@primariasighet.ro</p>
+                <p>Phone: 0262-311 300</p>
+                <p>Address: str. Bogdan Vodă, nr. 14, județul Maramureș</p>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Code Sighet. All rights reserved.</p>
+        </div>
+    </footer>
+    </body>
+</html>

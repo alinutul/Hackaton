@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/styleDocumente.css">
+</head>
+<body class="body">
+    
+    <div class="taskbar">
+        <ul>
+            <li><a href="main.html">Acasă</a></li>
+            <li><a href="Anunturi.html">Anunțuri</a></li>
+            <li><a href="Documente.html">Documente</a></li>
+            <li><a href="Informatii.html">Informații generale</a></li>
+            <li><a href="Programari.html">Programari</a></li>
+            <li><a href="Traseu.html">Traseu</a></li>
+            <p>Sighet Online</p>
+
+            <img src="images/Logo2.png" alt="" srcset="">
+          </ul>
+    </div>
+    <br>
+        <div class="flex-containers">
+            <div class="docs">
+                <p style="color:rgb(255, 255, 255);font-size: 25px;">Cerere autorizație construcție <br> (pdf)</p> 
+                <a href="documente/Cerere-AC (3).pdf" download>
+                    <button class="buton">Descarcă</button>
+                </a>
+            </div>
+            <div class="docs">
+                <p style="color:rgb(255, 255, 255);font-size: 25px;">Cerere adeverință domiciliu <br> (pdf)</p>
+                <a href="documente/Cerere-adv-dom.pdf" download>
+                    <button class="buton">Descarcă</button>
+                </a>
+            </div>
+            <div class="docs">
+                <p style="color:rgb(255, 255, 255);font-size: 25px;">Cerere atestat producător <br> (pdf)</p>
+                <a href="documente/Cerere-atestat.pdf" download>
+                    <button class="buton">Descarcă</button>
+                </a>
+            </div>
+            <div class="docs">
+                <p style="color:rgb(255, 255, 255);font-size: 25px;">Contract de înstrăinare-dobândire  <br> (pdf)</p>
+                <a href="documente/Contract-masina.pdf" download>
+                    <button class="buton">Descarcă</button>
+                </a>
+            </div>
+            <div class="docs">
+                <p style="color:rgb(255, 255, 255); font-size: 25px;">Declarația D-230 <br> (pdf)</p>
+                <a href="documente/D-230.pdf" download>
+                    <button class="buton">Descarcă</button>
+                </a>
+            </div>
+            <div class="docs">
+                <p style="color:rgb(255, 255, 255);font-size: 25px;">Declarație avere  <br> (pdf)</p>
+                <a href="documente/Declaratie-avere.pdf" download>
+                    <button class="buton">Descarcă</button>
+                </a>
+            </div>
+            <div class="docs">
+                <p style="color:rgb(255, 255, 255);font-size: 25px;">Proces verbal  <br> (pdf)</p>
+                <a href="documente/Proces-verbal.pdf" download>
+                    <button class="buton">Descarcă</button>
+                </a>
+            </div>
+        </div>
+
+    <div class="upload">
+        <input type="file" name="Alin" id="file-upload" onchange="updateFileName()">
+        <label for="file-upload">Alege un fișier</label>
+        <p id="file-name" style="color:rgb(255, 255, 255);">Nu a fost selectat niciun fișier.</p>
+        <button id="button-input">Trimite</button>
+    </div>
+    <div class="notification hidden" id="success-notification">
+        File sent successfully!
+    </div>
+    <script src="script/Documente.js"></script>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Left Section: Navigation Links -->
+            <div class="footer-left">
+                <h3>Program audiență primărie</h3>
+                <p>Primar: Marți orele 10:00-12:00 </p>
+                <p>Vice-Primar: Miercuri orele 10:00-12:00 </p>
+                <p>Secretar: Marți orele 12:00-14:00 </p>
+            </div>
+    
+            <!-- Footer Center Section: Social Media Icons -->
+            <div class="footer-center">
+                <h4>Urmărește</h4>
+                <div class="social-icons">
+                    <a href="https://www.primaria-sighet.ro/ro" class="social-icon">Website Primărie</a>
+                    <a href="https://muzeulmaramuresului.ro/" class="social-icon">Website Muzeul Maramureșului</a>
+                    <a href="https://www.spitalsighet.ro/" class="social-icon">Website Spital</a>
+                    <br>
+                    <a href="https://maranord.ro/" class="social-icon">Website Mara Nord</a>
+                    <a href="https://www.politiadefrontiera.ro/ro/structura-teritoriala-sighetu-marmatiei/" class="social-icon">Website Inspectoratul Teritorial</a>
+                    <a href="https://tvsighet.ro/" class="social-icon">Website TV Sighet</a>
+                </div>
+            </div>
+    
+            <!-- Footer Right Section: Contact Information -->
+            <div class="footer-right">
+                <h4>Contact Primăire</h4>
+                <p>Email: primaria@primariasighet.ro</p>
+                <p>Phone: 0262-311 300</p>
+                <p>Address: str. Bogdan Vodă, nr. 14, județul Maramureș</p>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Code Sighet. All rights reserved.</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

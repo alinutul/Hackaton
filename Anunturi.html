@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/styleAnunturi.css">
+</head>
+<body class="body">
+    
+    <div class="taskbar">
+        <ul>
+            <li><a href="main.html">Acasă</a></li>
+            <li><a href="Anunturi.html">Anunțuri</a></li>
+            <li><a href="Documente.html">Documente</a></li>
+            <li><a href="Informatii.html">Informații generale</a></li>
+            <li><a href="Programari.html">Programari</a></li>
+            <li><a href="Traseu.html">Traseu</a></li>
+            <p>Sighet Online</p>
+
+            <img src="images/Logo2.png" alt="" srcset="">
+          </ul>
+    </div>
+
+    <div class="posts-container">
+        <h2 class="posts-title">Anunțuri</h2>
+        
+        <!-- Form for adding new posts -->
+        <div class="add-post" >
+            <input type="text" id="date-pers" placeholder="Date personale" class="post-input">
+            <input type="text" id="post-title" placeholder="Titlul anunțului" class="post-input">
+            <textarea id="post-content" placeholder="Conținutul anunțului" class="post-input"></textarea>
+            <input type="file" id="img">
+            <button id="add-post-btn" class="post-button">Adaugă Anunț</button>
+        </div>
+        
+        <!-- Container where posts will be displayed -->
+        <div id="posts-list" class="posts-list"></div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Left Section: Navigation Links -->
+            <div class="footer-left">
+                <h3>Program audiență primărie</h3>
+                <p>Primar: Marți orele 10:00-12:00 </p>
+                <p>Vice-Primar: Miercuri orele 10:00-12:00 </p>
+                <p>Secretar: Marți orele 12:00-14:00 </p>
+            </div>
+    
+            <!-- Footer Center Section: Social Media Icons -->
+            <div class="footer-center">
+                <h4>Urmărește</h4>
+                <div class="social-icons">
+                    <a href="https://www.primaria-sighet.ro/ro" class="social-icon">Website Primărie</a>
+                    <a href="https://muzeulmaramuresului.ro/" class="social-icon">Website Muzeul Maramureșului</a>
+                    <a href="https://www.spitalsighet.ro/" class="social-icon">Website Spital</a>
+                    <br>
+                    <a href="https://maranord.ro/" class="social-icon">Website Mara Nord</a>
+                    <a href="https://www.politiadefrontiera.ro/ro/structura-teritoriala-sighetu-marmatiei/" class="social-icon">Website Inspectoratul Teritorial</a>
+                    <a href="https://tvsighet.ro/" class="social-icon">Website TV Sighet</a>
+                </div>
+            </div>
+    
+            <!-- Footer Right Section: Contact Information -->
+            <div class="footer-right">
+                <h4>Contact Primăire</h4>
+                <p>Email: primaria@primariasighet.ro</p>
+                <p>Phone: 0262-311 300</p>
+                <p>Address: str. Bogdan Vodă, nr. 14, județul Maramureș</p>
+            </div>
+        </div>
+    
+        <!-- Footer Bottom: Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Code Sighet. All rights reserved.</p>
+        </div>
+    </footer>    
+    <script src="script/Anunturi.js"></script>
+</body>
+</html>
