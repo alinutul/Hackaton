@@ -1,0 +1,99 @@
+/*Box*/
+.content{
+    margin: 20px;
+    padding: 20px;
+    background-color: #444444;
+    border-radius: 5px;
+    width: 90%; 
+    margin-left: 40px;
+}
+/*Imagine*/
+#imagine{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+/*Body+Taskbar*/
+.body{
+    background-color: #0f1f2f;
+}
+ul {
+    list-style-type: none;
+    margin: -7px -10px -7px -7px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Vertically align the items */
+    justify-content: space-between; /* Distribute space between items */
+}
+
+li {
+    /* No change here, the flexbox will handle positioning */
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #7CB895;
+    transition: 0.5s;
+}
+
+.text {
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+    color: rgb(0, 189, 252);
+}
+ul > p {
+    color: #ffffff;
+}
+
+/* Set image width and align it to the right */
+ul > img {
+    width: 4rem;
+    margin-left: auto; /* Push image to the right */
+
+}
+ul > p{
+    width: 8rem;
+    margin-left: 30rem;
+}
+/*End Body+Taskbar*/
+/*Start Informatii text*/
+#Titlu-Cultura{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+#Content-Cultura{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    color: white;
+}
+#Titlu-Timeline{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+#Content-Timeline{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    color: white;
+}
+/*END Informatii Text*/

@@ -1,0 +1,302 @@
+.body{
+    background-color: #0f1f2f;
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: -7px -10px -7px -7px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Vertically align the items */
+    justify-content: space-between; /* Distribute space between items */
+}
+
+li {
+    /* No change here, the flexbox will handle positioning */
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #7CB895;
+    transition: 0.5s;
+}
+
+.text {
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+    color: rgb(0, 189, 252);
+}
+/*Start text style*/
+#Titlu-Primarie{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+}
+#Titlu-Prezentare-Generala {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+}
+
+#Content-Prezentare-Generala {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    color: white;
+}
+#Titlu-Cultura{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+}
+#Content-Cultura{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    color: white;
+}
+#Titlu-Timeline{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+}
+#Content-Timeline{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    color: white;
+}
+/*End text style*/
+ul > p {
+    color: #ffffff;
+}
+
+/* Set image width and align it to the right */
+ul > img {
+    width: 4rem;
+    margin-left: auto; /* Push image to the right */
+
+}
+ul > p{
+    width: 8rem;
+    margin-left: 30rem;
+}
+.content{
+    margin: 20px;
+    padding: 20px;
+    background-color: #444444;
+    border-radius: 5px;
+    width: 50%; 
+}
+
+
+.pano{
+    display: flex;
+    justify-content: center;    
+    margin-left: 25%;
+    height: 50vh;              
+}
+
+/* Footer styles */
+.footer {
+    background-color: #333;       /* Dark background color */
+    color: white;                 /* White text color */
+    padding: 40px 20px;           /* Space around content */
+    font-family: Arial, sans-serif; /* Font family */
+    margin-top: 40px;             /* Space between the main content and the footer */
+}
+
+/* Footer container for layout */
+.footer-container {
+    display: flex;                /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Space between left, center, and right sections */
+    align-items: flex-start;      /* Align items to the top */
+}
+
+/* Footer Left Section */
+.footer-left ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-left ul li {
+    margin-bottom: 10px;
+}
+
+.footer-left ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-left ul li a:hover {
+    color: #ff9900;              /* Highlight links on hover */
+}
+
+/* Footer Center Section */
+.footer-center {
+    text-align: center;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.social-icons a:hover {
+    color: #ff9900;              /* Highlight social media icons on hover */
+}
+
+/* Footer Right Section */
+.footer-right {
+    text-align: right;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #bbb;                 /* Lighter text for copyright */
+}
+
+/* Posts section styles */
+.posts-container {
+    margin: 20px;
+    padding: 20px;
+    color: white;
+}
+
+.posts-title {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: white;
+    text-align: center;
+}
+
+.add-post {
+    background-color: #444444;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.post-input {
+    width: 98%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.post-input:focus {
+    outline: none;
+    border-color: #c16666;
+}
+
+#post-content {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.post-button {
+    background-color: #c16666;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.post-button:hover {
+    background-color: #a05555;
+}
+
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post {
+    background-color: #444444;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.post h3 {
+    margin-top: 0;
+    color: #c16666;
+    font-size: 20px;
+}
+
+.post p {
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.post-date {
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.post {
+    background-color: #444;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.post h3 {
+    color: white;
+    margin-top: 0;
+}
+
+.post p {
+    color: #ddd;
+    margin-bottom: 0;
+}
+
+h6{
+    color:#7cb895
+}
+.post-image {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 4px;
+}
