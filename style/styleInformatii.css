@@ -97,3 +97,69 @@ ul > p{
     color: white;
 }
 /*END Informatii Text*/
+
+
+  /* Footer styles */
+  .footer {
+    background-color: #333;       /* Dark background color */
+    color: white;                 /* White text color */
+    padding: 40px 20px;           /* Space around content */
+    font-family: Arial, sans-serif; /* Font family */
+    margin-top: 40px;             /* Space between the main content and the footer */
+}
+
+/* Footer container for layout */
+.footer-container {
+    display: flex;                /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Space between left, center, and right sections */
+    align-items: flex-start;      /* Align items to the top */
+}
+
+/* Footer Left Section */
+.footer-left ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-left ul li {
+    margin-bottom: 10px;
+}
+
+.footer-left ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-left ul li a:hover {
+    color: #ff9900;              /* Highlight links on hover */
+}
+
+/* Footer Center Section */
+.footer-center {
+    text-align: center;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin: 0 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.social-icons a:hover {
+    color: #ff9900;              /* Highlight social media icons on hover */
+}
+
+/* Footer Right Section */
+.footer-right {
+    text-align: right;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #bbb;                 /* Lighter text for copyright */
+}

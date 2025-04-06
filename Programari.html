@@ -253,21 +253,8 @@
                     eventClick: handleEventClick,
                     events: loadAppointments(),
                     dayCellContent: function(arg) {
-                        // Add appointment count to each day
-                        const appointments = loadAppointments();
-                        const dateStr = arg.date.toISOString().split('T')[0];
-                        const dayAppointments = appointments.filter(app => 
-                            app.start.startsWith(dateStr)
-                        ).length;
-                        
+                        // Display only the day number without the appointment count
                         const dayNumber = arg.dayNumberText.replace(' ', '');
-                        
-                        if (dayAppointments > 0) {
-                            return {
-                                html: `${dayNumber}<div class="day-appointment-count">${dayAppointments}</div>`
-                            };
-                        }
-                        
                         return { html: dayNumber };
                     }
                 });
@@ -310,33 +297,34 @@
                 
                 // Functions
                 function handleDateSelect(info) {
-                    const selectedDate = info.start;
+                    const selectedDate = new Date(info.start);
+                    selectedDate.setDate(selectedDate.getDate() + 1); // Move one day forward
                     const today = new Date();
                     today.setHours(0, 0, 0, 0);
-                    
+                
                     if (selectedDate < today) {
                         alert('Nu puteți face programări pentru date trecute.');
                         calendar.unselect();
                         return;
                     }
-                    
+                
                     editingAppointmentId = null;
                     document.getElementById('modalTitle').textContent = 'Adaugă programare nouă';
                     resetForm();
-                    
+                
                     // Set the selected date
                     const dateStr = selectedDate.toISOString().split('T')[0];
                     appointmentDate.value = dateStr;
-                    
+                
                     // Filter available times
                     filterAvailableTimes(dateStr);
-                    
+                
                     appointmentModal.style.display = 'flex';
                 }
                 
                 function handleEventClick(info) {
                     const event = info.event;
-                    const start = event.start;
+                    const start = new Date(event.start); // Use the event's start date as is
                     const dateStr = start.toLocaleDateString('ro-RO', { 
                         weekday: 'long', 
                         year: 'numeric', 
@@ -347,7 +335,7 @@
                         hour: '2-digit', 
                         minute: '2-digit' 
                     });
-                    
+                
                     const details = `
                         <p><strong>Data:</strong> ${dateStr}</p>
                         <p><strong>Ora:</strong> ${timeStr}</p>
@@ -355,7 +343,7 @@
                         <p><strong>Nume:</strong> ${event.title}</p>
                         <p><strong>Motiv:</strong> ${event.extendedProps.reason}</p>
                     `;
-                    
+                
                     document.getElementById('appointmentDetails').innerHTML = details;
                     viewModal.style.display = 'flex';
                 }
